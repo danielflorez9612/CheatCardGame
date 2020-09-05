@@ -1,6 +1,7 @@
 package com.daniel.cardgame.cheat.domain;
 
 import com.daniel.cardgame.cheat.domain.enums.CardNumber;
+import com.daniel.cardgame.cheat.players.Player;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 

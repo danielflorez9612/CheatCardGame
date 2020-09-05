@@ -1,5 +1,9 @@
-package com.daniel.cardgame.cheat.domain;
+package com.daniel.cardgame.cheat.players;
 
+import com.daniel.cardgame.cheat.domain.Card;
+import com.daniel.cardgame.cheat.domain.CheatGame;
+import com.daniel.cardgame.cheat.domain.Hand;
+import com.daniel.cardgame.cheat.domain.Play;
 import lombok.Data;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
@@ -9,7 +13,7 @@ import java.util.Objects;
 
 @Data
 @RequiredArgsConstructor
-public class Player {
+public abstract class Player {
     @NonNull
     private String name;
     private Hand hand = new Hand();
@@ -26,10 +30,14 @@ public class Player {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || !getClass().equals(o.getClass())) return false;
+        if (!(o instanceof Player)) return false;
         Player player = (Player) o;
         return Objects.equals(name, player.name);
     }
+
+    public abstract Play makePlay(Player player, CheatGame cheatGame);
+
+    public abstract boolean willCallCheat(CheatGame cheatGame, Player currentPlayer);
 
     @Override
     public int hashCode() {
