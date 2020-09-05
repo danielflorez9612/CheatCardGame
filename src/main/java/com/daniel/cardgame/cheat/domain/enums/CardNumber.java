@@ -10,8 +10,7 @@ import java.util.Optional;
 @AllArgsConstructor
 @Getter
 public enum CardNumber {
-    ACE("A",0),
-    ONE("1", 1),
+    ACE("A",1),
     TWO("2", 2),
     THREE("3", 3),
     FOUR("4",4),
@@ -21,7 +20,7 @@ public enum CardNumber {
     EIGHT("8",8),
     NINE("9",9),
     TEN("10",10),
-    PRINCE("J",11),
+    JACK("J",11),
     QUEEN("Q",12),
     KING("K",13)
     ;
@@ -29,7 +28,11 @@ public enum CardNumber {
     private String representation;
     private Integer number;
 
-    public static Optional<CardNumber> getNumber(int number) {
+    public static Optional<CardNumber> getByRepresentation(String representation) {
+        return Arrays.stream(CardNumber.values()).filter(n -> Objects.equals(n.getRepresentation(), representation)).findFirst();
+    }
+
+    public static Optional<CardNumber> getByValue(int number) {
         return Arrays.stream(CardNumber.values()).filter(n -> Objects.equals(n.getNumber(), number)).findFirst();
     }
 }

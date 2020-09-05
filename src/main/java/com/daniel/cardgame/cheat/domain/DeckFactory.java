@@ -19,7 +19,7 @@ public class DeckFactory {
 
     private static Collection<Card> createSuit(int numberOfCards, Suit suit) {
         Collection<Card> cards = new LinkedList<>();
-        for(int i = 0; i<= numberOfCards; i++) {
+        for(int i = 1; i<= numberOfCards; i++) {
             cards.add(new Card(i, suit));
         }
         return cards;
