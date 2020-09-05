@@ -12,7 +12,7 @@ public class Card {
 
     public Card(int number, Suit suit) {
         this.suit = suit;
-        this.number = CardNumber.getNumber(number).orElseThrow(() -> new IllegalArgumentException("Invalid Card"));
+        this.number = CardNumber.getByValue(number).orElseThrow(() -> new IllegalArgumentException("Invalid Card"));
     }
 
     @Override

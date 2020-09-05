@@ -27,7 +27,7 @@ public class CheatGame {
     public List<CardNumber> possibleNextPlays() {
         List<CardNumber> nextPlays = new LinkedList<>();
         nextPlays.add(currentCardValue);
-        nextPlays.add(CardNumber.ACE);
+        if (!Objects.equals(CardNumber.ACE, currentCardValue)) nextPlays.add(CardNumber.ACE);
         if (!Objects.equals(CardNumber.KING, currentCardValue)) {
             nextPlays.addAll(Arrays.asList(CardNumber.values()).subList(currentCardValue.ordinal() + 1, CardNumber.values().length));
         }

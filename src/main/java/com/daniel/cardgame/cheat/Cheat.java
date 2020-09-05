@@ -1,6 +1,7 @@
 package com.daniel.cardgame.cheat;
 
 import com.daniel.cardgame.cheat.domain.*;
+import com.daniel.cardgame.cheat.players.HumanPlayer;
 import com.daniel.cardgame.cheat.players.ia.RandomIA;
 import com.daniel.cardgame.cheat.players.Player;
 
@@ -9,7 +10,7 @@ import java.util.*;
 public class Cheat {
     public static void main(String[] args) {
         List<Player> players = Arrays.asList(
-                new RandomIA("pepe"),
+                new HumanPlayer(),
                 new RandomIA("juan"),
                 new RandomIA("camilo"),
                 new RandomIA("laura")
@@ -22,7 +23,7 @@ public class Cheat {
             nextPlayer = cheatGame.getNextPlayer(turn++);
             int startingSize = nextPlayer.getHand().getCards().size();
             System.out.println("Its " + nextPlayer.getName() + "'s turn! he has " + startingSize + " cards");
-            Play play = nextPlayer.makePlay(nextPlayer, cheatGame);
+            Play play = nextPlayer.makePlay(cheatGame);
             System.out.println("He played a "+ play.getNumberTold().getRepresentation());
             Player finalNextPlayer = nextPlayer;
             Optional<Player> someoneWhoCalledCheat = players.stream().filter(player -> player.willCallCheat(cheatGame, finalNextPlayer)).findFirst();

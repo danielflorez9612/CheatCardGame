@@ -35,7 +35,7 @@ public abstract class Player {
         return Objects.equals(name, player.name);
     }
 
-    public abstract Play makePlay(Player player, CheatGame cheatGame);
+    public abstract Play makePlay(CheatGame cheatGame);
 
     public abstract boolean willCallCheat(CheatGame cheatGame, Player currentPlayer);
 
